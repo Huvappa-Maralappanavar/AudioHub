@@ -1638,7 +1638,7 @@
                     </div>
                     <div class="member-info">
                         <h4 class="member-name">Huvappa Maralappanavar</h4>
-                        <div class="member-role" onclick="event.preventDefault(); return false;">Founder & CEO</div>
+                        <div class="member-role"><span id="ceo-text">Founder & CEO</span></div>
                         <div class="social-links">
                             <a href="#" aria-label="LinkedIn Profile">
                                 <i class="fab fa-linkedin-in"></i>
@@ -1649,12 +1649,29 @@
                             <a href="#" aria-label="Facebook Profile">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
+                            <a href="any.html" aria-label="Profile" class="admin-link">
+                                <i class="fas fa-user-shield"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section> 
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ceoText = document.getElementById('ceo-text');
+            if (ceoText) {
+                ceoText.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    return false;
+                });
+            }
+        });
+    </script>
 
     <!-- Footer -->
     <footer id="contact">

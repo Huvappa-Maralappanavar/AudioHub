@@ -179,7 +179,6 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 25px;
         }
 
         .social-links a {
@@ -1449,27 +1448,227 @@
     </div>
 
     <!-- Profile Modal -->
-    <div class="modal-overlay" id="profile-modal">
-        <div class="profile-modal">
-            <span class="close-modal">&times;</span>
-            <div class="profile-header">
-                <div class="profile-avatar">
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="profile-info">
-                    <h3>Welcome Back</h3>
-                    <p>Guest User</p>
-                </div>
+    <div class="modal-overlay" id="profile-modal" style="display: none;">
+    <div class="profile-card">
+        <span class="close-modal" id="close-profile-modal" style="position: absolute; right: 20px; top: 20px; font-size: 28px; cursor: pointer; color: white; z-index: 1000;">&times;</span>
+        <div class="profile-header">
+            <div class="profile-pic">
+                <i class="fas fa-user"></i>
             </div>
-            <ul class="profile-menu">
+            <h1 class="profile-name">Huvappa Maralappanavar</h1>
+            <p class="profile-role">Premium Member</p>
+        </div>
+        
+        <div class="profile-menu">
+            <h3 class="menu-title">Account Settings</h3>
+            <ul class="menu-list">
                 <li><a href="#"><i class="fas fa-user-circle"></i> My Profile</a></li>
                 <li><a href="#"><i class="fas fa-box"></i> My Orders</a></li>
                 <li><a href="#"><i class="fas fa-heart"></i> Wishlist</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Account Settings</a></li>
+                <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                <li><a href="#"><i class="fas fa-lock"></i> Privacy & Security</a></li>
+                <li><a href="#"><i class="fas fa-question-circle"></i> Help & Support</a></li>
                 <li><a href="#"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
             </ul>
         </div>
     </div>
+</div>
+
+<style>
+/* Profile Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.95);
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    margin: 20px;
+}
+
+.modal-overlay.active .profile-card {
+    transform: translateY(0);
+}
+
+.profile-header {
+    background: linear-gradient(to right, #3498db, #8e44ad);
+    padding: 40px 0 60px;
+    text-align: center;
+    position: relative;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid white;
+    margin: 0 auto;
+    background: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: #777;
+}
+
+.profile-name {
+    color: white;
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.profile-role {
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+.profile-menu {
+    padding: 30px 25px;
+    position: relative;
+    top: -30px;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.menu-title {
+    color: #7f8c8d;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list li {
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.menu-list li:hover {
+    transform: translateX(5px);
+}
+
+.menu-list a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #2c3e50;
+    padding: 15px 20px;
+    border-radius: 15px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.menu-list a:hover {
+    background: #3498db;
+    color: white;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.menu-list i {
+    font-size: 22px;
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
+}
+
+.menu-list .fa-user-circle { color: #3498db; }
+.menu-list .fa-box { color: #9b59b6; }
+.menu-list .fa-heart { color: #e74c3c; }
+.menu-list .fa-cog { color: #9b59b6; }
+.menu-list .fa-bell { color: #f39c12; }
+.menu-list .fa-lock { color: #e74c3c; }
+.menu-list .fa-question-circle { color: #1abc9c; }
+.menu-list .fa-sign-out-alt { color: #95a5a6; }
+
+.menu-list a:hover i {
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        border-radius: 10px;
+    }
+    
+    .profile-header {
+        padding: 30px 0 50px;
+    }
+    
+    .profile-menu {
+        padding: 20px 15px;
+    }
+}
+</style>
+
+<script>
+// Profile Modal Toggle
+function toggleProfileModal() {
+    const modal = document.getElementById('profile-modal');
+    modal.classList.toggle('active');
+    document.body.style.overflow = modal.classList.contains('active') ? 'hidden' : '';
+}
+
+// Close modal when clicking the close button
+document.getElementById('close-profile-modal').addEventListener('click', function(e) {
+    e.stopPropagation();
+    toggleProfileModal();
+});
+
+// Close modal when clicking outside the modal content
+document.getElementById('profile-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        toggleProfileModal();
+    }
+});
+
+// Add click animation to menu items
+document.querySelectorAll('.menu-list a').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => {
+            this.style.transform = '';
+        }, 200);
+        // Add your navigation logic here
+        console.log('Navigating to:', this.getAttribute('href'));
+    });
+});
+</script>
 
     <!-- Cart Modal -->
     <div class="modal-overlay" id="cart-modal">
@@ -1498,7 +1697,7 @@
         <div class="checkout-modal">
             <span class="close-modal">&times;</span>
             <h3>Checkout</h3>
-            <form class="checkout-form" id="checkout-form">
+            <form id="checkout-form" class="checkout-form" onsubmit="handleOrderSubmission(event)">
                 <div class="form-group">
                     <label for="full-name">Full Name</label>
                     <input type="text" id="full-name" name="full-name" required>
@@ -1506,10 +1705,6 @@
                 <div class="form-group">
                     <label for="contact-number">Contact Number</label>
                     <input type="tel" id="contact-number" name="contact-number" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Full Address</label>
@@ -1543,7 +1738,7 @@
             </div>
             <div class="confirmation-message">
                 <h3>Order Confirmed!</h3>
-                <p>Thank you for your purchase. Your order details have been sent to the seller. You'll receive a confirmation email shortly.</p>
+                <p>Thank you for your purchase. Your order details have been sent to the seller. You'll receive a confirmation message shortly.</p>
                 <button class="btn btn-primary" id="continue-shopping-confirm-btn">Continue Shopping</button>
             </div>
         </div>
@@ -2281,29 +2476,163 @@
             
             // Get form values
             const formData = {
-                fullName: document.getElementById('full-name').value,
-                contactNumber: document.getElementById('contact-number').value,
-                email: document.getElementById('email').value,
-                address: document.getElementById('address').value,
-                city: document.getElementById('city').value,
-                state: document.getElementById('state').value,
-                zip: document.getElementById('zip').value,
-                cartItems: cart,
+                customer: {
+                    fullName: document.getElementById('full-name').value,
+                    contactNumber: document.getElementById('contact-number').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    zip: document.getElementById('zip').value,
+                    location: {
+                        latitude: null,
+                        longitude: null,
+                        address: ''
+                    }
+                },
+                cartItems: cart.map(item => ({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity,
+                    image: item.image,
+                    description: item.description || 'No description available',
+                    category: item.category || 'Uncategorized',
+                    addedAt: new Date().toISOString()
+                })),
+                subtotal: cart.reduce((total, item) => total + (item.price * item.quantity), 0),
+                shipping: 0, // Can be calculated based on location
+                tax: 0, // Can be calculated based on location
                 total: cart.reduce((total, item) => total + (item.price * item.quantity), 0),
+                paymentMethod: 'Cash on Delivery',
+                shippingMethod: 'Standard',
+                orderNotes: '',
                 date: new Date().toISOString(),
-                status: 'Pending',
-                orderNumber: 'AH-' + Date.now().toString().slice(-6)
+                status: 'New',
+                orderNumber: 'AH-' + Date.now().toString().slice(-6),
+                source: 'Web Store',
+                ipAddress: '',
+                userAgent: navigator.userAgent
             };
             
-            // Save order to admin orders
-            const adminOrders = JSON.parse(localStorage.getItem('adminOrders') || '[]');
-            adminOrders.push(formData);
-            localStorage.setItem('adminOrders', JSON.stringify(adminOrders));
+            // Add geolocation if available
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        formData.customer.location.latitude = position.coords.latitude;
+                        formData.customer.location.longitude = position.coords.longitude;
+                        
+                        // Reverse geocode to get address
+                        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${position.coords.latitude}&lon=${position.coords.longitude}&zoom=18&addressdetails=1`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const address = data.address || {};
+                                formData.customer.location.address = [
+                                    address.road,
+                                    address.suburb,
+                                    address.city || address.town || address.village,
+                                    address.state,
+                                    address.country,
+                                    address.postcode
+                                ].filter(Boolean).join(', ');
+                                
+                                // Update the address field if empty
+                                if (!formData.customer.address && formData.customer.location.address) {
+                                    formData.customer.address = formData.customer.location.address;
+                                }
+                                
+                                // Save the order with location data
+                                saveOrder(formData);
+                            })
+                            .catch(() => saveOrder(formData));
+                    },
+                    () => saveOrder(formData), // Continue without location if denied
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    }
+                );
+            } else {
+                saveOrder(formData);
+            }
             
-            // Save order to customer orders
-            const customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
-            customerOrders.push(formData);
-            localStorage.setItem('customerOrders', JSON.stringify(customerOrders));
+            // Function to save order to storage
+            function saveOrder(orderData) {
+                // Add metadata to order
+                const orderWithMeta = {
+                    ...orderData,
+                    id: 'order-' + Date.now(),
+                    status: 'New',
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString(),
+                    // Add IP address if available (from a real server, this would come from the request)
+                    ipAddress: orderData.ipAddress || ''
+                };
+                
+                // Save to admin orders
+                const adminOrders = JSON.parse(localStorage.getItem('adminOrders') || '[]');
+                adminOrders.unshift(orderWithMeta);
+                localStorage.setItem('adminOrders', JSON.stringify(adminOrders));
+                
+                // Save to session orders
+                const sessionOrders = JSON.parse(sessionStorage.getItem('userOrders') || '[]');
+                sessionOrders.unshift(orderWithMeta);
+                sessionStorage.setItem('userOrders', JSON.stringify(sessionOrders));
+                
+                // Save to customer orders
+                const customerOrders = JSON.parse(localStorage.getItem('customerOrders') || '[]');
+                customerOrders.push(orderWithMeta);
+                localStorage.setItem('customerOrders', JSON.stringify(customerOrders));
+                
+                // Continue with order confirmation
+                completeOrderConfirmation(orderWithMeta);
+            }
+            
+            // Function to complete order confirmation
+            function completeOrderConfirmation(orderData) {
+                // Close checkout modal
+                closeModal(checkoutModal);
+                
+                // Clear the cart
+                cart = [];
+                updateCart();
+                
+                // Show order confirmation with delivery date
+                const deliveryDate = new Date();
+                deliveryDate.setDate(deliveryDate.getDate() + 12);
+                
+                const formattedDate = deliveryDate.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                
+                // Update confirmation modal content
+                const confirmationContent = document.querySelector('.confirmation-content');
+                if (confirmationContent) {
+                    confirmationContent.innerHTML = `
+                        <div class="confirmation-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h2>Order Confirmed!</h2>
+                        <p>Thank you for your order, ${orderData.customer.fullName}!</p>
+                        <p>Your order number is: <strong>${orderData.orderNumber}</strong></p>
+                        <div class="delivery-info">
+                            <i class="fas fa-truck"></i>
+                            <p>Expected Delivery: <strong>${formattedDate}</strong></p>
+                        </div>
+                        <button id="continue-shopping-confirm-btn" class="btn btn-primary">Continue Shopping</button>
+                    `;
+                }
+                
+                // Show confirmation modal
+                openModal(confirmationModal);
+                
+                // Add event listener to the new continue button
+                document.getElementById('continue-shopping-confirm-btn').addEventListener('click', () => {
+                    closeModal(confirmationModal);
+                });
+            }
             
             // Close checkout modal
             closeModal(checkoutModal);
@@ -2336,7 +2665,6 @@
                         <i class="fas fa-truck"></i>
                         <p>Expected Delivery: <strong>${formattedDate}</strong></p>
                     </div>
-                    <p>We've sent an order confirmation to <strong>${formData.email}</strong></p>
                     <button id="continue-shopping-confirm-btn" class="btn btn-primary">Continue Shopping</button>
                 `;
             }
